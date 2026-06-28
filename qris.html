@@ -338,7 +338,7 @@ String(m).padStart(2,'0')+':'+
 String(s).padStart(2,'0');
 
 if(duration<=0){
-location.href='success.html';
+location.href='failed.html';
 }
 
 duration--;
@@ -379,7 +379,7 @@ btn.addEventListener('click',()=>{
 document.getElementById('loading').style.display='flex';
 
 setTimeout(()=>{
-location.href='loading.html';
+location.href='success.html';
 },2500);
 
 });
