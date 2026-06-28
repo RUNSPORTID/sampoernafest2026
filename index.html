@@ -1,111 +1,269 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>SampoernaFest Medan - SMB</title>
 
+<meta name="theme-color" content="#0056D6">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
 <style>
 
+:root{
+
+--primary:#0056D6;
+--secondary:#0B57D0;
+--white:#FFFFFF;
+--bg:#F5F6FA;
+--text:#222;
+--muted:#777;
+--border:#ECECEC;
+--radius:18px;
+--shadow:0 10px 25px rgba(0,0,0,.08);
+
+}
+
 *{
+
 margin:0;
 padding:0;
 box-sizing:border-box;
+
+}
+
+html{
+
 scroll-behavior:smooth;
+
 }
 
 body{
 
-font-family:Arial,Helvetica,sans-serif;
-background:#f5f5f5;
-color:#222;
+font-family:'Poppins',sans-serif;
+
+background:var(--bg);
+
+color:var(--text);
+
+overflow-x:hidden;
+
+}
+
+img{
+
+display:block;
+
+width:100%;
 
 }
 
 a{
+
 text-decoration:none;
+
 color:inherit;
-}
-
-.header{
-
-position:sticky;
-top:0;
-left:0;
-right:0;
-
-height:60px;
-
-background:#ffffff;
-
-display:flex;
-align-items:center;
-
-padding:0 18px;
-
-font-size:24px;
-font-weight:bold;
-
-box-shadow:0 2px 8px rgba(0,0,0,.08);
-
-z-index:999;
 
 }
 
-.back{
+button{
 
-font-size:30px;
-margin-right:12px;
+font-family:inherit;
+
 cursor:pointer;
+
+border:none;
+
+outline:none;
 
 }
 
 .container{
 
 max-width:900px;
+
 margin:auto;
 
 padding-bottom:120px;
 
 }
 
+header{
+
+position:sticky;
+
+top:0;
+
+left:0;
+
+right:0;
+
+height:65px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+padding:0 18px;
+
+background:#fff;
+
+z-index:9999;
+
+transition:.30s;
+
+}
+
+header.scrolled{
+
+box-shadow:0 5px 18px rgba(0,0,0,.10);
+
+}
+
+.header-left{
+
+display:flex;
+
+align-items:center;
+
+gap:15px;
+
+}
+
+.back-button{
+
+width:40px;
+
+height:40px;
+
+border-radius:50%;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+background:#F2F2F2;
+
+transition:.25s;
+
+}
+
+.back-button:hover{
+
+background:#E6E6E6;
+
+}
+
+.header-title{
+
+font-size:20px;
+
+font-weight:700;
+
+}
+
 .banner{
+
+position:relative;
 
 width:100%;
 
+height:280px;
+
 overflow:hidden;
 
-background:#ddd;
+border-bottom-left-radius:24px;
+
+border-bottom-right-radius:24px;
+
+background:#DDD;
 
 }
 
 .banner img{
 
-display:block;
-
 width:100%;
 
-height:auto;
+height:100%;
+
+object-fit:cover;
+
+}
+
+.overlay{
+
+position:absolute;
+
+left:0;
+
+right:0;
+
+top:0;
+
+bottom:0;
+
+background:linear-gradient(
+
+180deg,
+
+rgba(0,0,0,.05),
+
+rgba(0,0,0,.45)
+
+);
 
 }
 
 .content{
 
-background:#fff;
+margin-top:-45px;
 
-padding:20px;
+position:relative;
+
+z-index:5;
+
+padding:18px;
 
 }
 
-.title{
+.event-card{
 
-font-size:34px;
+background:#fff;
 
-font-weight:bold;
+border-radius:22px;
 
-margin-bottom:15px;
+padding:22px;
+
+box-shadow:var(--shadow);
+
+animation:fadeUp .6s ease;
+
+}
+
+.event-title{
+
+font-size:28px;
+
+font-weight:700;
+
+margin-bottom:18px;
+
+color:#111;
 
 }
 
@@ -113,29 +271,33 @@ margin-bottom:15px;
 
 display:flex;
 
-align-items:center;
+align-items:flex-start;
 
-margin-bottom:12px;
+gap:14px;
 
-font-size:18px;
+margin-bottom:15px;
+
+font-size:16px;
+
+}
+
+.info i{
+
+width:22px;
+
+margin-top:2px;
+
+color:var(--primary);
 
 }
 
 .info span{
 
-margin-left:10px;
+line-height:1.7;
 
 }
 
-.card{
-
-background:#fff;
-
-border-radius:14px;
-
-padding:18px;
-
-margin-top:15px;
+.action-card{
 
 display:flex;
 
@@ -143,63 +305,77 @@ justify-content:space-between;
 
 align-items:center;
 
-box-shadow:0 2px 8px rgba(0,0,0,.08);
+padding:18px;
+
+border-radius:16px;
+
+background:#FAFAFA;
+
+margin-top:15px;
+
+border:1px solid var(--border);
+
+transition:.25s;
+
+cursor:pointer;
 
 }
 
-.card-left{
+.action-card:hover{
+
+background:#F0F7FF;
+
+border-color:#BFD6FF;
+
+}
+
+.action-left{
 
 display:flex;
 
 align-items:center;
 
+gap:15px;
+
 }
 
-.card-icon{
+.action-icon{
 
-width:52px;
-height:52px;
+width:48px;
+
+height:48px;
 
 border-radius:50%;
 
-background:#0b57d0;
-
 display:flex;
 
 align-items:center;
+
 justify-content:center;
 
-font-size:24px;
+background:var(--primary);
 
-color:white;
+color:#fff;
 
-margin-right:15px;
-
-}
-
-.card-title{
-
-font-size:20px;
-
-font-weight:bold;
+font-size:18px;
 
 }
 
-.card-sub{
+.action-title{
 
-margin-top:4px;
+font-weight:600;
 
-font-size:16px;
-
-color:#666;
+font-size:17px;
 
 }
 
-.arrow{
+.action-sub{
 
-font-size:28px;
+font-size:14px;
 
-color:#999;
+color:var(--muted);
+
+margin-top:3px;
 
 }
 
@@ -207,19 +383,25 @@ color:#999;
 
 display:flex;
 
-justify-content:space-between;
+overflow:auto;
 
-background:white;
+gap:10px;
 
-margin-top:20px;
-
-border-bottom:2px solid #eee;
+padding:20px 18px 0;
 
 position:sticky;
 
-top:60px;
+top:65px;
 
-z-index:998;
+background:var(--bg);
+
+z-index:100;
+
+}
+
+.tabs::-webkit-scrollbar{
+
+display:none;
 
 }
 
@@ -227,69 +409,109 @@ z-index:998;
 
 flex:1;
 
-padding:18px 10px;
+min-width:120px;
 
 text-align:center;
 
-font-weight:bold;
+padding:14px;
+
+border-radius:12px;
+
+background:#fff;
+
+font-weight:600;
+
+color:#666;
+
+transition:.25s;
 
 cursor:pointer;
 
-transition:.3s;
-
-border-bottom:4px solid transparent;
+border:1px solid transparent;
 
 }
 
 .tab.active{
 
-color:#0056d6;
+background:var(--primary);
 
-border-bottom:4px solid #0056d6;
+color:#fff;
 
 }
 
 .section{
 
-padding:30px 20px;
+padding:22px 18px;
 
-background:white;
+}
 
-margin-top:10px;
+.section-card{
+
+background:#fff;
+
+border-radius:20px;
+
+padding:22px;
+
+box-shadow:var(--shadow);
+
+}
+
+.section-title{
+
+font-size:22px;
+
+font-weight:700;
+
+margin-bottom:18px;
+
+color:var(--primary);
+
+}
+
+@keyframes fadeUp{
+
+from{
+
+opacity:0;
+
+transform:translateY(30px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
 
 }
 
 @media(max-width:768px){
 
-.title{
+.banner{
 
-font-size:28px;
-
-}
-
-.info{
-
-font-size:16px;
+height:220px;
 
 }
 
-.card-title{
+.event-title{
+
+font-size:22px;
+
+}
+
+.header-title{
 
 font-size:18px;
 
 }
 
-.card-sub{
+.tabs{
 
-font-size:15px;
-
-}
-
-.tab{
-
-font-size:14px;
-
-padding:15px 5px;
+top:65px;
 
 }
 
@@ -301,110 +523,157 @@ padding:15px 5px;
 
 <body>
 
-<header class="header">
+<header id="header">
 
-<div class="back">
-←
-</div>
+<div class="header-left">
+
+<a href="javascript:history.back()" class="back-button">
+
+<i class="fa-solid fa-arrow-left"></i>
+
+</a>
+
+<div class="header-title">
 
 Detail Event
+
+</div>
+
+</div>
 
 </header>
 
 <div class="container">
 
-<div class="banner">
+<!-- ========================= -->
+<!-- BANNER -->
+<!-- ========================= -->
 
-<img src="banner.png">
+<section class="banner">
 
-</div>
+<img src="banner.png" alt="Banner SampoernaFest">
+
+<div class="overlay"></div>
+
+</section>
+
+<!-- ========================= -->
+<!-- CONTENT -->
+<!-- ========================= -->
 
 <div class="content">
 
-<div class="title">
+<div class="event-card">
+
+<h1 class="event-title">
 
 SampoernaFest Medan - SMB
 
-</div>
+</h1>
 
 <div class="info">
 
-📆
-<span>04 Juli 2026</span>
+<i class="fa-solid fa-calendar-days"></i>
 
-</div>
-
-<div class="info">
-
-⏰
-<span>16:00 WIB</span>
-
-</div>
-
-<div class="info">
-
-📍
 <span>
-Lap. Parkir Lotte Grosir, Kota Medan, Sumatera Utara
+
+04 Juli 2026
+
 </span>
 
 </div>
 
-<div class="card">
+<div class="info">
 
-<div class="card-left">
+<i class="fa-solid fa-clock"></i>
 
-<div class="card-icon">
+<span>
 
-🧭
+16:00 WIB
+
+</span>
+
+</div>
+
+<div class="info">
+
+<i class="fa-solid fa-location-dot"></i>
+
+<span>
+
+Lap. Parkir Lotte Grosir,
+Kota Medan,
+Sumatera Utara
+
+</span>
+
+</div>
+
+<!-- ========================= -->
+<!-- PETUNJUK ARAH -->
+<!-- ========================= -->
+
+<a
+
+href="https://maps.google.com/?q=Lap. Parkir Lotte Grosir Medan"
+
+target="_blank"
+
+class="action-card">
+
+<div class="action-left">
+
+<div class="action-icon">
+
+<i class="fa-solid fa-location-arrow"></i>
 
 </div>
 
 <div>
 
-<div class="card-title">
+<div class="action-title">
 
 Petunjuk Arah
 
 </div>
 
-<div class="card-sub">
+<div class="action-sub">
 
-Google Maps
-
-</div>
+Buka Google Maps
 
 </div>
 
 </div>
 
-<div class="arrow">
-
->
-
 </div>
 
-</div>
+<i class="fa-solid fa-chevron-right"></i>
 
-<div class="card">
+</a>
 
-<div class="card-left">
+<!-- ========================= -->
+<!-- ORGANIZER -->
+<!-- ========================= -->
 
-<div class="card-icon">
+<div class="action-card">
 
-🏛️
+<div class="action-left">
+
+<div class="action-icon">
+
+<i class="fa-solid fa-building-columns"></i>
 
 </div>
 
 <div>
 
-<div class="card-title">
+<div class="action-title">
 
 Dibuat Oleh
 
 </div>
 
-<div class="card-sub">
+<div class="action-sub">
 
 PT. Bank Sahabat Sampoerna
 
@@ -414,155 +683,172 @@ PT. Bank Sahabat Sampoerna
 
 </div>
 
-<div class="arrow">
-
->
+<i class="fa-solid fa-circle-check"></i>
 
 </div>
 
 </div>
+
+</div>
+
+<!-- ========================= -->
+<!-- TAB MENU -->
+<!-- ========================= -->
 
 <div class="tabs">
 
-<div class="tab active" data-target="deskripsi">
+<div class="tab active"
+
+data-target="deskripsi">
 
 Deskripsi
 
 </div>
 
-<div class="tab" data-target="lineup">
+<div class="tab"
+
+data-target="lineup">
 
 Line Up
 
 </div>
 
-<div class="tab" data-target="fasilitas">
+<div class="tab"
+
+data-target="fasilitas">
 
 Fasilitas
 
 </div>
 
-<div class="tab" data-target="media">
+<div class="tab"
 
-Media Sosial
+data-target="media">
+
+Media
 
 </div>
 
 </div>
 
-<!-- BAGIAN 2 AKAN DIMULAI DARI SINI -->
-
-<section id="deskripsi" class="section">
-
-<!-- Deskripsi -->
-
-</section>
-
-<section id="lineup" class="section">
-
-<!-- Line Up -->
-
-</section>
-
-<section id="fasilitas" class="section">
-
-<!-- Fasilitas -->
-
-</section>
-
-<section id="media" class="section">
-
-<!-- Media Sosial -->
-
-</section>
-
- <!-- ===================== -->
+<!-- ========================= -->
 <!-- DESKRIPSI -->
-<!-- ===================== -->
+<!-- ========================= -->
 
-<section id="deskripsi" class="section">
+<section
 
-<h2 style="color:#0056d6;margin-bottom:20px;">
-📝 DESKRIPSI
+id="deskripsi"
+
+class="section">
+
+<div class="section-card">
+
+<h2 class="section-title">
+
+Deskripsi
+
 </h2>
 
-<p style="line-height:1.9;font-size:17px;">
+<p style="line-height:1.9;color:#555;">
 
-SampoernaFest, sebuah <b>edutainment festival</b> dalam merayakan literasi keuangan dengan menyediakan pengalaman dan musik yang menarik.
-
-</p>
-
-<br>
-
-<p style="line-height:1.9;font-size:17px;">
-
-SampoernaFest diselenggarakan untuk memberikan pengalaman edukatif, inspiratif, sekaligus menghibur dengan tujuan utama memperkuat pemahaman masyarakat mengenai pentingnya sehat finansial.
-
-</p>
-
-<br>
-
-<p style="line-height:1.9;font-size:17px;">
-
-Festival ini akan digelar pada <b>4 Juli 2026</b>.
-
-Pembelian tiket bersifat <b>No Refund</b> dan <b>No Upgrade / Downgrade.</b>
+SampoernaFest merupakan festival
+edutainment yang menggabungkan
+literasi keuangan,
+hiburan,
+kuliner,
+aktivitas komunitas,
+serta konser musik
+dalam satu pengalaman.
 
 </p>
 
 <br>
 
-<p style="line-height:1.9;font-size:17px;">
+<p style="line-height:1.9;color:#555;">
 
-Apabila terjadi <b>Force Majeure</b> (bencana alam, perang, kerusuhan, pemadaman listrik skala besar dan kondisi kahar lainnya), penyelenggara berhak melakukan <b>reschedule event</b> dan akan mengumumkannya melalui kanal resmi SampoernaFest.
+Festival akan dilaksanakan pada
+04 Juli 2026.
+
+Pembelian tiket bersifat
+No Refund dan
+No Upgrade / Downgrade.
+
+Jika terjadi force majeure,
+penyelenggara akan melakukan
+penjadwalan ulang dan
+memberikan informasi
+melalui kanal resmi
+SampoernaFest.
 
 </p>
 
-</section>
-
-<!-- ===================== -->
+</div>
+ 
+</section> 
+ 
+<!-- ========================= -->
 <!-- LINE UP -->
-<!-- ===================== -->
+<!-- ========================= -->
 
 <section id="lineup" class="section">
 
-<h2 style="color:#0056d6;margin-bottom:20px;">
-🎤 LINE UP
+<div class="section-card">
+
+<h2 class="section-title">
+
+Line Up
+
 </h2>
 
-<div style="display:grid;
-grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
-gap:18px;">
+<div class="artist-grid">
 
-<div class="artist">
+<div class="artist-card">
 
-<img src="image1.jpg">
+<img src="image1.jpg" alt="Sal Priadi">
 
-<h3>Sal Priadi</h3>
+<div class="artist-name">
 
-</div>
-
-<div class="artist">
-
-<img src="image2.jpg">
-
-<h3>Last Child</h3>
+Sal Priadi
 
 </div>
 
-<div class="artist">
+</div>
 
-<img src="image3.jpg">
+<div class="artist-card">
 
-<h3>Mahalini</h3>
+<img src="image2.jpg" alt="Last Child">
+
+<div class="artist-name">
+
+Last Child
 
 </div>
 
-<div class="artist">
+</div>
 
-<img src="image4.jpg">
+<div class="artist-card">
 
-<h3>Pamungkas</h3>
+<img src="image3.jpg" alt="Mahalini">
+
+<div class="artist-name">
+
+Mahalini
+
+</div>
+
+</div>
+
+<div class="artist-card">
+
+<img src="image4.jpg" alt="Pamungkas">
+
+<div class="artist-name">
+
+Pamungkas
+
+</div>
+
+</div>
 
 </div>
 
@@ -570,141 +856,259 @@ gap:18px;">
 
 </section>
 
-<style>
-
-.artist{
-
-background:#fff;
-
-border-radius:15px;
-
-overflow:hidden;
-
-box-shadow:0 4px 10px rgba(0,0,0,.08);
-
-text-align:center;
-
-}
-
-.artist img{
-
-width:100%;
-
-height:220px;
-
-object-fit:cover;
-
-display:block;
-
-}
-
-.artist h3{
-
-padding:15px;
-
-font-size:18px;
-
-}
-
-</style>
-
-<!-- ===================== -->
+<!-- ========================= -->
 <!-- FASILITAS -->
-<!-- ===================== -->
+<!-- ========================= -->
 
 <section id="fasilitas" class="section">
 
-<h2 style="color:#0056d6;margin-bottom:20px;">
-🏢 FASILITAS
+<div class="section-card">
+
+<h2 class="section-title">
+
+Fasilitas
+
 </h2>
 
 <div class="facility-grid">
 
-<div class="facility">🚑<br>Ambulance</div>
+<div class="facility-item">
 
-<div class="facility">🅿️<br>Area Parkir</div>
+<i class="fa-solid fa-truck-medical"></i>
 
-<div class="facility">👑<br>Area VIP</div>
+<span>Ambulance</span>
 
-<div class="facility">🛍<br>Merchandise Area</div>
+</div>
 
-<div class="facility">📷<br>Photo Booth</div>
+<div class="facility-item">
 
-<div class="facility">💺<br>Seating Area</div>
+<i class="fa-solid fa-square-parking"></i>
 
-<div class="facility">🎵<br>Stage Utama</div>
+<span>Area Parkir</span>
 
-<div class="facility">🕌<br>Tempat Ibadah</div>
+</div>
 
-<div class="facility">🍔<br>Tenant Makanan</div>
+<div class="facility-item">
 
-<div class="facility">🚻<br>Toilet</div>
+<i class="fa-solid fa-crown"></i>
+
+<span>Area VIP</span>
+
+</div>
+
+<div class="facility-item">
+
+<i class="fa-solid fa-bag-shopping"></i>
+
+<span>Merchandise</span>
+
+</div>
+
+<div class="facility-item">
+
+<i class="fa-solid fa-camera"></i>
+
+<span>Photo Booth</span>
+
+</div>
+
+<div class="facility-item">
+
+<i class="fa-solid fa-chair"></i>
+
+<span>Seating Area</span>
+
+</div>
+
+<div class="facility-item">
+
+<i class="fa-solid fa-music"></i>
+
+<span>Main Stage</span>
+
+</div>
+
+<div class="facility-item">
+
+<i class="fa-solid fa-mosque"></i>
+
+<span>Tempat Ibadah</span>
+
+</div>
+
+<div class="facility-item">
+
+<i class="fa-solid fa-utensils"></i>
+
+<span>Tenant Makanan</span>
+
+</div>
+
+<div class="facility-item">
+
+<i class="fa-solid fa-restroom"></i>
+
+<span>Toilet</span>
+
+</div>
+
+</div>
 
 </div>
 
 </section>
 
 <style>
+
+.artist-grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+
+gap:18px;
+
+}
+
+.artist-card{
+
+background:#fff;
+
+border-radius:18px;
+
+overflow:hidden;
+
+box-shadow:0 8px 18px rgba(0,0,0,.08);
+
+transition:.3s;
+
+cursor:pointer;
+
+}
+
+.artist-card:hover{
+
+transform:translateY(-6px);
+
+}
+
+.artist-card img{
+
+height:240px;
+
+object-fit:cover;
+
+}
+
+.artist-name{
+
+padding:15px;
+
+font-size:17px;
+
+font-weight:600;
+
+text-align:center;
+
+}
 
 .facility-grid{
 
 display:grid;
 
-grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
 
 gap:15px;
 
+margin-top:10px;
+
 }
 
-.facility{
+.facility-item{
 
-background:white;
+background:#fff;
 
-border-radius:15px;
+border:1px solid #ECECEC;
+
+border-radius:16px;
 
 padding:20px;
 
 text-align:center;
 
-font-size:17px;
+transition:.3s;
 
-box-shadow:0 2px 8px rgba(0,0,0,.08);
+}
 
-line-height:2;
+.facility-item:hover{
+
+background:#F5FAFF;
+
+border-color:#0056D6;
+
+}
+
+.facility-item i{
+
+font-size:30px;
+
+color:#0056D6;
+
+margin-bottom:12px;
+
+display:block;
+
+}
+
+.facility-item span{
+
+font-size:15px;
+
+font-weight:600;
 
 }
 
 </style>
 
-<!-- ===================== -->
+<!-- ========================= -->
 <!-- MEDIA SOSIAL -->
-<!-- ===================== -->
+<!-- ========================= -->
 
 <section id="media" class="section">
 
-<h2 style="color:#0056d6;margin-bottom:20px;">
-📱 MEDIA SOSIAL
+<div class="section-card">
+
+<h2 class="section-title">
+
+Media Sosial
+
 </h2>
 
-<div class="card">
+<a
 
-<div class="card-left">
+href="https://instagram.com/sampoernafest"
 
-<div class="card-icon">
+target="_blank"
 
-📷
+class="social-card">
+
+<div class="social-left">
+
+<div class="social-icon">
+
+<i class="fa-brands fa-instagram"></i>
 
 </div>
 
 <div>
 
-<div class="card-title">
+<div class="social-title">
 
 Instagram
 
 </div>
 
-<div class="card-sub">
+<div class="social-sub">
 
 @sampoernafest
 
@@ -714,57 +1118,165 @@ Instagram
 
 </div>
 
-<div class="arrow">
+<i class="fa-solid fa-chevron-right"></i>
 
->
-
-</div>
+</a>
 
 </div>
 
 </section>
 
- <!-- ===================== -->
+<!-- ========================= -->
 <!-- FOOTER -->
-<!-- ===================== -->
+<!-- ========================= -->
 
 <footer class="footer">
 
-    <div class="footer-logo">
-        <img src="logo.png" alt="Logo">
-    </div>
+<div class="footer-logo">
 
-    <div class="footer-info">
+<img src="logo.png" alt="Logo">
 
-        <h2>SampoernaFest</h2>
+</div>
 
-        <p>📲 Call Center : +62 23 7997 7693</p>
+<h2>
 
-        <p>📩 SampoernaFest@gmail.com</p>
+SampoernaFest
 
-    </div>
+</h2>
+
+<p>
+
+Festival Literasi Keuangan & Musik
+
+</p>
+
+<div class="footer-contact">
+
+<div>
+
+<i class="fa-solid fa-phone"></i>
+
+<span>+62 23 7997 7693</span>
+
+</div>
+
+<div>
+
+<i class="fa-solid fa-envelope"></i>
+
+<span>SampoernaFest@gmail.com</span>
+
+</div>
+
+</div>
 
 </footer>
 
-<!-- ===================== -->
+<!-- ========================= -->
 <!-- TOMBOL BELI -->
-<!-- ===================== -->
+<!-- ========================= -->
 
-<a href="tiket.html" class="buy-button">
-    Beli Sekarang
+<a href="tiket.html"
+
+class="buy-button"
+
+id="buyButton">
+
+<i class="fa-solid fa-ticket"></i>
+
+<span>Beli Sekarang</span>
+
 </a>
 
 <style>
 
+.social-card{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:18px;
+
+border:1px solid #ECECEC;
+
+border-radius:18px;
+
+background:#fff;
+
+transition:.3s;
+
+}
+
+.social-card:hover{
+
+background:#F8FBFF;
+
+border-color:#0056D6;
+
+}
+
+.social-left{
+
+display:flex;
+
+align-items:center;
+
+gap:15px;
+
+}
+
+.social-icon{
+
+width:55px;
+
+height:55px;
+
+border-radius:50%;
+
+background:linear-gradient(45deg,#833AB4,#FD1D1D,#FCAF45);
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+color:white;
+
+font-size:24px;
+
+}
+
+.social-title{
+
+font-weight:700;
+
+font-size:17px;
+
+}
+
+.social-sub{
+
+font-size:14px;
+
+color:#777;
+
+margin-top:4px;
+
+}
+
 .footer{
 
-margin-top:40px;
+margin-top:30px;
 
-background:#0b57d0;
+background:#0056D6;
 
-color:#fff;
+color:white;
 
-padding:35px 20px 120px;
+padding:45px 25px 120px;
 
 text-align:center;
 
@@ -774,23 +1286,47 @@ text-align:center;
 
 width:90px;
 
-margin-bottom:20px;
+margin:auto;
+
+margin-bottom:18px;
 
 }
 
 .footer h2{
 
-margin-bottom:15px;
-
-font-size:24px;
+margin-bottom:8px;
 
 }
 
 .footer p{
 
-margin:10px 0;
+opacity:.9;
 
-font-size:17px;
+margin-bottom:25px;
+
+}
+
+.footer-contact{
+
+display:flex;
+
+flex-direction:column;
+
+gap:15px;
+
+}
+
+.footer-contact div{
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+gap:12px;
+
+font-size:16px;
 
 }
 
@@ -804,11 +1340,13 @@ right:15px;
 
 bottom:15px;
 
-height:58px;
+height:60px;
 
-background:#0b57d0;
+background:#0056D6;
 
-color:#fff;
+color:white;
+
+border-radius:18px;
 
 display:flex;
 
@@ -816,23 +1354,25 @@ justify-content:center;
 
 align-items:center;
 
-font-size:20px;
+gap:12px;
 
-font-weight:bold;
+font-size:19px;
 
-border-radius:14px;
+font-weight:700;
 
-box-shadow:0 8px 20px rgba(0,0,0,.2);
-
-z-index:9999;
+box-shadow:0 10px 30px rgba(0,0,0,.25);
 
 transition:.25s;
+
+z-index:99999;
 
 }
 
 .buy-button:hover{
 
-background:#0044b3;
+transform:translateY(-2px);
+
+background:#0048B5;
 
 }
 
@@ -844,19 +1384,49 @@ transform:scale(.98);
 
 </style>
 
+<!-- ========================= -->
+<!-- JAVASCRIPT -->
+<!-- ========================= -->
+
 <script>
+
+// =========================
+// HEADER SHADOW
+// =========================
+
+const header=document.getElementById("header");
+
+window.addEventListener("scroll",()=>{
+
+if(window.scrollY>15){
+
+header.classList.add("scrolled");
+
+}else{
+
+header.classList.remove("scrolled");
+
+}
+
+});
+
+// =========================
+// TAB MENU
+// =========================
 
 const tabs=document.querySelectorAll(".tab");
 
+const sections=document.querySelectorAll("section[id]");
+
 tabs.forEach(tab=>{
 
-tab.onclick=function(){
+tab.addEventListener("click",()=>{
 
-tabs.forEach(t=>t.classList.remove("active"));
+const target=document.getElementById(tab.dataset.target);
 
-this.classList.add("active");
+if(target){
 
-document.getElementById(this.dataset.target).scrollIntoView({
+target.scrollIntoView({
 
 behavior:"smooth",
 
@@ -864,23 +1434,25 @@ block:"start"
 
 });
 
-};
+}
+
+});
 
 });
 
 window.addEventListener("scroll",()=>{
 
-const sections=document.querySelectorAll("section");
-
 let current="";
 
-sections.forEach(sec=>{
+sections.forEach(section=>{
 
-const top=sec.offsetTop-160;
+const top=section.offsetTop-180;
 
-if(pageYOffset>=top){
+const height=section.offsetHeight;
 
-current=sec.getAttribute("id");
+if(window.scrollY>=top && window.scrollY<(top+height)){
+
+current=section.id;
 
 }
 
@@ -898,7 +1470,101 @@ tab.classList.add("active");
 
 });
 
+});
+
+// =========================
+// FADE IN
+// =========================
+
+const observer=new IntersectionObserver(entries=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.style.opacity="1";
+
+entry.target.style.transform="translateY(0)";
+
+}
+
+});
+
+},{
+
+threshold:.15
+
+});
+
+document.querySelectorAll(".section-card").forEach(card=>{
+
+card.style.opacity="0";
+
+card.style.transform="translateY(40px)";
+
+card.style.transition=".6s";
+
+observer.observe(card);
+
+});
+
+// =========================
+// RIPPLE BUTTON
+// =========================
+
+const buy=document.getElementById("buyButton");
+
+buy.addEventListener("click",()=>{
+
+buy.style.transform="scale(.96)";
+
+setTimeout(()=>{
+
+buy.style.transform="scale(1)";
+
+},150);
+
+});
+
+// =========================
+// CARD HOVER MOBILE
+// =========================
+
+document.querySelectorAll(".artist-card").forEach(card=>{
+
+card.addEventListener("touchstart",()=>{
+
+card.style.transform="scale(.98)";
+
+});
+
+card.addEventListener("touchend",()=>{
+
+card.style.transform="scale(1)";
+
+});
+
+});
+
+// =========================
+// LOADING
+// =========================
+
+window.addEventListener("load",()=>{
+
+document.body.style.opacity="1";
+
+});
+
 </script>
 
+</div>
+
 </body>
+
 </html>
+
+
+
+ 
+ 
